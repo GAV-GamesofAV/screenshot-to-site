@@ -28,3 +28,10 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- All festival copy, events, schedule, contacts and links live in `src/data/fest.ts`; components only render it — keeps content editable in one place by non-developers.
+- Empty link fields (registration URL, emails, socials) render a "coming soon" state, never an `href` — the site is reached via a printed QR code and must have no broken links.
+- Watercolor illustrations are painted on white and shown with the `ink-blend` (multiply) utility so the parchment background shows through; generate new ones on pure white.
+- The site is a single scrolling page with anchor nav (`#about`, `#events`, …) because it is opened from a poster QR code on phones.

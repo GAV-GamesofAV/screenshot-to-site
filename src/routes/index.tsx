@@ -1,23 +1,54 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/fest/SiteHeader";
+import { Hero } from "@/components/fest/Hero";
+import { About } from "@/components/fest/About";
+import { Events } from "@/components/fest/Events";
+import { Schedule } from "@/components/fest/Schedule";
+import { Attractions } from "@/components/fest/Attractions";
+import { Register } from "@/components/fest/Register";
+import { Contact } from "@/components/fest/Contact";
+import { SiteFooter } from "@/components/fest/SiteFooter";
+import { BondDivider } from "@/components/fest/primitives";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Chem Connect 6.0 — Chemistrecreate Chemistry Festival" },
+      {
+        name: "description",
+        content:
+          "Chemistrecreate presents Chem Connect 6.0, the Chemistry Club's annual festival. Where Chemistry Comes Alive — events, schedule and registration.",
+      },
+      { property: "og:title", content: "Chem Connect 6.0 — Chemistrecreate" },
+      {
+        property: "og:description",
+        content: "The Chemistry Club's annual festival. Where Chemistry Comes Alive.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="paper-texture min-h-screen">
+      <SiteHeader />
+      <main>
+        <Hero />
+        <BondDivider formula="C₆H₆" />
+        <About />
+        <BondDivider formula="NaCl → Na⁺ + Cl⁻" />
+        <Events />
+        <Schedule />
+        <Attractions />
+        <BondDivider formula="H₂O" />
+        <Register />
+        <BondDivider formula="CO₂" />
+        <Contact />
+      </main>
+      <SiteFooter />
     </div>
   );
 }
